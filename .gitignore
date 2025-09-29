@@ -1,0 +1,20 @@
+# tiny-imagenet-200/test/images
+
+requirements.txt
+# data
+tiny-imagenet-200
+*.zip
+*.tar*
+
+# outputs
+plots/
+metrics/
+checkpoints/
+*.json
+*.png
+*.jpg
+*.svg
+
+# env cruft
+.DS_Store
+__pycache__
