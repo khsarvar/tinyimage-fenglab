@@ -1,6 +1,6 @@
 # tiny-imagenet-200/test/images
 
-requirements.txt
+# requirements.txt
 # data
 tiny-imagenet-200
 *.zip
