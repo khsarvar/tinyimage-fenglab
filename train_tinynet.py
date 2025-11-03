@@ -73,32 +73,6 @@ class ResNetTinyINet(nn.Module):
     def forward(self, x):
         return self.base(x)
 
-"""
-def build_resnet(variant: str, num_classes: int = 200):
-    
-    Build a ResNet-18/34 adapted for Tiny-ImageNet (64x64):
-      - conv1: 3x3, stride=1, padding=1
-      - remove maxpool
-      - fc -> num_classes
-    
-    if variant == "resnet18":
-        m = tvm.resnet18(weights=None)
-    elif variant == "resnet34":
-        m = tvm.resnet34(weights=None)
-    else:
-        raise ValueError(f"Unknown ResNet variant: {variant}")
-
-    # Adapt for 64x64 inputs
-    m.conv1 = nn.Conv2d(3, 64, kernel_size=3, stride=1, padding=1, bias=False)
-    m.maxpool = nn.Identity()
-
-    # Replace classifier for 200 classes
-    m.fc = nn.Linear(m.fc.in_features, num_classes)
-
-    # Stamp arch for resume-safety
-    m.arch = variant
-    return m
-"""
 
 def build_model(args):
     if args.arch == "tinynet":
