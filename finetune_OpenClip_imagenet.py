@@ -15,6 +15,10 @@ from PIL import Image
 import open_clip
 from contextlib import nullcontext
 
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+
 # =========================
 # Utilities
 # =========================
@@ -102,6 +106,60 @@ def save_history_json(history, path: Path):
     ensure_dir(path.parent)
     with path.open("w") as f:
         json.dump(history, f, indent=2)
+
+def _stamp_plot(fig, run_id: str):
+    fig.text(0.99, 0.01, run_id, ha="right", va="bottom", fontsize=8, alpha=0.7)
+
+def plot_curves(history, outdir: Path, run_id: str):
+    ensure_dir(outdir)
+
+    epochs = history["epoch"]
+
+    # Loss curves
+    fig = plt.figure()
+    plt.plot(epochs, history["train_loss"], label="Train Loss")
+    plt.plot(epochs, history["val_loss"], label="Val Loss")
+    plt.xlabel("Epoch")
+    plt.ylabel("Loss")
+    plt.title(f"Loss vs Epochs · {run_id}")
+    plt.legend()
+    plt.grid(True, linestyle="--", alpha=0.4)
+    _stamp_plot(fig, run_id)
+    loss_path = Path(outdir) / f"{run_id}_loss_curve.png"
+    plt.savefig(loss_path, bbox_inches="tight", dpi=150)
+    plt.close(fig)
+
+    # Accuracy curves (Top-1)
+    fig = plt.figure()
+    plt.plot(epochs, [x * 100 for x in history["train_top1"]], label="Train Top-1")
+    plt.plot(epochs, [x * 100 for x in history["val_top1"]], label="Val Top-1")
+    plt.xlabel("Epoch")
+    plt.ylabel("Accuracy (%)")
+    plt.title(f"Top-1 Accuracy vs Epochs · {run_id}")
+    plt.legend()
+    plt.grid(True, linestyle="--", alpha=0.4)
+    _stamp_plot(fig, run_id)
+    acc1_path = Path(outdir) / f"{run_id}_acc_curve_top1.png"
+    plt.savefig(acc1_path, bbox_inches="tight", dpi=150)
+    plt.close(fig)
+
+    # Accuracy curves (Top-5)
+    fig = plt.figure()
+    plt.plot(epochs, [x * 100 for x in history["train_top5"]], label="Train Top-5")
+    plt.plot(epochs, [x * 100 for x in history["val_top5"]], label="Val Top-5")
+    plt.xlabel("Epoch")
+    plt.ylabel("Accuracy (%)")
+    plt.title(f"Top-5 Accuracy vs Epochs · {run_id}")
+    plt.legend()
+    plt.grid(True, linestyle="--", alpha=0.4)
+    _stamp_plot(fig, run_id)
+    acc5_path = Path(outdir) / f"{run_id}_acc_curve_top5.png"
+    plt.savefig(acc5_path, bbox_inches="tight", dpi=150)
+    plt.close(fig)
+
+    print(f"[PLOTS] Saved: {loss_path}")
+    print(f"[PLOTS] Saved: {acc1_path}")
+    print(f"[PLOTS] Saved: {acc5_path}")
 
 # =========================
 # TinyImageNet helpers
@@ -269,6 +327,8 @@ def main():
     ap.add_argument("--ckpt_path", type=str, default="", help="Explicit checkpoint filepath (overrides ckpt_dir/run_name)")
     ap.add_argument("--metrics_dir", type=str, default="metrics", help="Base directory for metrics JSON logs")
     ap.add_argument("--metrics_path", type=str, default="", help="Explicit metrics JSON filepath (overrides metrics_dir/run_name)")
+    ap.add_argument("--plots_outdir", type=str, default="plots", help="Base directory for training curves")
+    ap.add_argument("--no_plots", action="store_true", help="Skip curve plotting")
     args = ap.parse_args()
 
     run_id = args.run_name.strip() or make_run_id(args)
@@ -285,10 +345,14 @@ def main():
         ensure_dir(metrics_dir)
         metrics_path = metrics_dir / f"{run_id}_metrics.json"
 
+    plots_dir = Path(args.plots_outdir) / run_id
+    ensure_dir(plots_dir)
+
     print(f"Run ID: {run_id}")
     print(f"Checkpoints dir: {ckpt_dir}")
     print(f"Checkpoint file: {ckpt_path}")
     print(f"Metrics file: {metrics_path}")
+    print(f"Plots dir: {plots_dir}")
 
     history = init_history()
 
@@ -432,6 +496,8 @@ def main():
     print(f"Best Val Acc: {best_top1*100:.2f}%")
     save_history_json(history, metrics_path)
     print(f"[METRICS] Wrote {metrics_path}")
+    if not args.no_plots:
+        plot_curves(history, plots_dir, run_id)
 
 if __name__ == "__main__":
     main()
