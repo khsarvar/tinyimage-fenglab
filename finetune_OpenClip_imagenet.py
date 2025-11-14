@@ -1,7 +1,8 @@
 #!/usr/bin/env python
-import argparse, os, math
+import argparse, math, time, json
+from datetime import datetime
 from pathlib import Path
-from typing import List, Tuple, Dict, Optional
+from typing import List, Tuple, Dict
 
 import torch
 import torch.nn as nn
@@ -67,6 +68,40 @@ def cosine_with_warmup(optimizer, num_warmup_steps, num_training_steps, last_epo
         progress = (current_step - num_warmup_steps) / max(1, num_training_steps - num_warmup_steps)
         return 0.5 * (1.0 + math.cos(math.pi * progress))
     return torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda, last_epoch)
+
+# =========================
+# Logging helpers
+# =========================
+
+def ensure_dir(path: Path):
+    Path(path).mkdir(parents=True, exist_ok=True)
+
+def make_run_id(args) -> str:
+    ts = datetime.now().strftime("%Y%m%d-%H%M%S")
+    model_slug = args.model.replace("/", "-")
+    return f"{ts}_{model_slug}_bs{args.batch_size}_uk{args.unfreeze_k}"
+
+def init_history():
+    return {
+        "epoch": [],
+        "train_loss": [], "val_loss": [],
+        "train_top1": [], "val_top1": [],
+        "train_top5": [], "val_top5": [],
+        "epoch_time": []
+    }
+
+def update_history(H, epoch, tr_loss, va_loss, tr_t1, va_t1, tr_t5, va_t5, dt):
+    H["epoch"].append(epoch)
+    H["train_loss"].append(tr_loss);   H["val_loss"].append(va_loss)
+    H["train_top1"].append(tr_t1);     H["val_top1"].append(va_t1)
+    H["train_top5"].append(tr_t5);     H["val_top5"].append(va_t5)
+    H["epoch_time"].append(dt)
+
+def save_history_json(history, path: Path):
+    path = Path(path)
+    ensure_dir(path.parent)
+    with path.open("w") as f:
+        json.dump(history, f, indent=2)
 
 # =========================
 # TinyImageNet helpers
@@ -147,7 +182,7 @@ class LinearHead(nn.Module):
 
 def train_one_epoch(model, head, loader, optimizer, scaler, device, epoch, autocast_ctx, accumulation_steps=1):
     model.train(); head.train()
-    running_loss, correct, total = 0.0, 0, 0
+    running_loss, top1_correct, top5_correct, total = 0.0, 0, 0, 0
     optimizer.zero_grad(set_to_none=True)
 
     for step, (images, targets) in enumerate(loader):
@@ -171,17 +206,22 @@ def train_one_epoch(model, head, loader, optimizer, scaler, device, epoch, autoc
             optimizer.zero_grad(set_to_none=True)
 
         running_loss += loss.item() * accumulation_steps
-        pred = logits.argmax(dim=1)
-        correct += (pred == targets).sum().item()
+        with torch.no_grad():
+            _, pred = logits.topk(5, dim=1)
+            top1_correct += (pred[:, 0] == targets).sum().item()
+            top5_correct += (pred == targets.unsqueeze(1)).any(dim=1).sum().item()
         total += targets.size(0)
 
-    return running_loss / len(loader), 100.0 * correct / total
+    avg_loss = running_loss / len(loader)
+    top1 = top1_correct / total if total else 0.0
+    top5 = top5_correct / total if total else 0.0
+    return avg_loss, top1, top5
 
 @torch.no_grad()
 def evaluate(model, head, loader, device, autocast_ctx):
     model.eval(); head.eval()
     loss_fn = head.loss
-    running_loss, correct, total = 0.0, 0, 0
+    running_loss, top1_correct, top5_correct, total = 0.0, 0, 0, 0
 
     for images, targets in loader:
         images, targets = images.to(device, non_blocking=True), targets.to(device, non_blocking=True)
@@ -190,11 +230,15 @@ def evaluate(model, head, loader, device, autocast_ctx):
             logits = head(feats)
             loss = loss_fn(logits, targets)
         running_loss += loss.item()
-        pred = logits.argmax(dim=1)
-        correct += (pred == targets).sum().item()
+        _, pred = logits.topk(5, dim=1)
+        top1_correct += (pred[:, 0] == targets).sum().item()
+        top5_correct += (pred == targets.unsqueeze(1)).any(dim=1).sum().item()
         total += targets.size(0)
 
-    return running_loss / len(loader), 100.0 * correct / total
+    avg_loss = running_loss / len(loader)
+    top1 = top1_correct / total if total else 0.0
+    top5 = top5_correct / total if total else 0.0
+    return avg_loss, top1, top5
 
 # =========================
 # Main
@@ -220,7 +264,33 @@ def main():
     ap.add_argument("--label_smoothing", type=float, default=0.0)
     ap.add_argument("--cosine", action="store_true")
     ap.add_argument("--warmup_epochs", type=int, default=5)
+    ap.add_argument("--run_name", type=str, default="", help="Optional identifier for this run (used in output paths)")
+    ap.add_argument("--ckpt_dir", type=str, default="checkpoints", help="Directory to store checkpoints")
+    ap.add_argument("--ckpt_path", type=str, default="", help="Explicit checkpoint filepath (overrides ckpt_dir/run_name)")
+    ap.add_argument("--metrics_dir", type=str, default="metrics", help="Base directory for metrics JSON logs")
+    ap.add_argument("--metrics_path", type=str, default="", help="Explicit metrics JSON filepath (overrides metrics_dir/run_name)")
     args = ap.parse_args()
+
+    run_id = args.run_name.strip() or make_run_id(args)
+    ckpt_dir = Path(args.ckpt_dir)
+    ensure_dir(ckpt_dir)
+    default_ckpt_name = f"{run_id}_openclip_{args.model.replace('/', '-')}_tinyimg_k{args.unfreeze_k}_best.pt"
+    ckpt_path = Path(args.ckpt_path) if args.ckpt_path else ckpt_dir / default_ckpt_name
+
+    if args.metrics_path:
+        metrics_path = Path(args.metrics_path)
+        ensure_dir(metrics_path.parent)
+    else:
+        metrics_dir = Path(args.metrics_dir) / run_id
+        ensure_dir(metrics_dir)
+        metrics_path = metrics_dir / f"{run_id}_metrics.json"
+
+    print(f"Run ID: {run_id}")
+    print(f"Checkpoints dir: {ckpt_dir}")
+    print(f"Checkpoint file: {ckpt_path}")
+    print(f"Metrics file: {metrics_path}")
+
+    history = init_history()
 
     # Device
     device = "cuda" if torch.cuda.is_available() else ("mps" if torch.backends.mps.is_available() else "cpu")
@@ -323,35 +393,45 @@ def main():
 
     autocast_ctx, scaler = get_autocast_and_scaler(device, args.fp16)
 
-    best_acc = 0.0
+    best_top1 = 0.0
     for epoch in range(1, args.epochs + 1):
-        train_loss, train_acc = train_one_epoch(
+        epoch_start = time.perf_counter()
+        train_loss, train_top1, train_top5 = train_one_epoch(
             model, head, train_loader, optimizer, scaler, device, epoch, autocast_ctx, args.accum_steps
         )
-        val_loss, val_acc = evaluate(model, head, val_loader, device, autocast_ctx)
+        val_loss, val_top1, val_top5 = evaluate(model, head, val_loader, device, autocast_ctx)
+        epoch_time = time.perf_counter() - epoch_start
 
-        print(f"Epoch {epoch} | Train Loss: {train_loss:.4f} | Train Acc: {train_acc:.2f}%")
-        print(f"Epoch {epoch} | Val   Loss: {val_loss:.4f} | Val   Acc: {val_acc:.2f}%")
+        print(
+            f"Epoch {epoch:02d}/{args.epochs} | "
+            f"Train Loss: {train_loss:.4f} | Train Acc@1: {train_top1*100:.2f}% | Train Acc@5: {train_top5*100:.2f}% | "
+            f"Val Loss: {val_loss:.4f} | Val Acc@1: {val_top1*100:.2f}% | Val Acc@5: {val_top5*100:.2f}% | "
+            f"Epoch Time: {epoch_time:.1f}s"
+        )
 
         if scheduler is not None:
             scheduler.step()
 
-        if val_acc > best_acc:
-            best_acc = val_acc
+        update_history(history, epoch, train_loss, val_loss, train_top1, val_top1, train_top5, val_top5, epoch_time)
+
+        if val_top1 > best_top1:
+            best_top1 = val_top1
             ckpt = {
                 "epoch": epoch,
                 "model_state": model.state_dict(),
                 "head_state": head.state_dict(),
                 "optimizer_state": optimizer.state_dict(),
-                "best_acc": best_acc,
+                "best_acc": best_top1 * 100.0,
+                "best_acc_top1": best_top1,
                 "classes": train_ds.classes,
                 "args": vars(args),
             }
-            os.makedirs("checkpoints", exist_ok=True)
-            torch.save(ckpt, f"checkpoints/openclip_{args.model.replace('/','-')}_tinyimg_k{args.unfreeze_k}_best.pt")
-            print(f"Saved new best checkpoint (acc={best_acc:.2f}%).")
+            torch.save(ckpt, ckpt_path)
+            print(f"Saved new best checkpoint to {ckpt_path} (acc={best_top1*100:.2f}%).")
 
-    print(f"Best Val Acc: {best_acc:.2f}%")
+    print(f"Best Val Acc: {best_top1*100:.2f}%")
+    save_history_json(history, metrics_path)
+    print(f"[METRICS] Wrote {metrics_path}")
 
 if __name__ == "__main__":
     main()
