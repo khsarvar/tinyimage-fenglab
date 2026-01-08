@@ -18,4 +18,4 @@ checkpoints/
 # env cruft
 .DS_Store
 __pycache__
-env
+.env
