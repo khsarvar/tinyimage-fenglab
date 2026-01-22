@@ -1,0 +1,31 @@
+Device: cuda
+Epoch 1/10 - loss: 10.0976 - time: 262.9s
+Val zero-shot - top1: 0.0050 top5: 0.0250
+Saved best student checkpoint to: checkpoints/20260122-112203_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 2/10 - loss: 9.9185 - time: 258.5s
+Val zero-shot - top1: 0.0143 top5: 0.0582
+Saved best student checkpoint to: checkpoints/20260122-112203_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 3/10 - loss: 9.5017 - time: 258.2s
+Val zero-shot - top1: 0.0369 top5: 0.1302
+Saved best student checkpoint to: checkpoints/20260122-112203_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 4/10 - loss: 8.8687 - time: 258.3s
+Val zero-shot - top1: 0.0646 top5: 0.2104
+Saved best student checkpoint to: checkpoints/20260122-112203_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 5/10 - loss: 8.3767 - time: 258.7s
+Val zero-shot - top1: 0.0937 top5: 0.2773
+Saved best student checkpoint to: checkpoints/20260122-112203_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 6/10 - loss: 8.0333 - time: 258.3s
+Val zero-shot - top1: 0.1066 top5: 0.3032
+Saved best student checkpoint to: checkpoints/20260122-112203_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 7/10 - loss: 7.7923 - time: 258.1s
+Val zero-shot - top1: 0.1240 top5: 0.3274
+Saved best student checkpoint to: checkpoints/20260122-112203_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 8/10 - loss: 7.5658 - time: 258.3s
+Val zero-shot - top1: 0.1427 top5: 0.3584
+Saved best student checkpoint to: checkpoints/20260122-112203_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 9/10 - loss: 7.3477 - time: 258.1s
+Val zero-shot - top1: 0.1587 top5: 0.3878
+Saved best student checkpoint to: checkpoints/20260122-112203_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 10/10 - loss: 7.1200 - time: 258.0s
+Val zero-shot - top1: 0.1749 top5: 0.4113
+Saved best student checkpoint to: checkpoints/20260122-112203_ViT-B-32_half_clip_distill_student_half.pt

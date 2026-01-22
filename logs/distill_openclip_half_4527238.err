@@ -1,0 +1,7 @@
+WARNING:root:No pretrained weights loaded for model 'ViT-B-32'. Model initialized randomly.
+Traceback (most recent call last):
+  File "/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/distill_openclip_half.py", line 448, in <module>
+    main()
+  File "/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/distill_openclip_half.py", line 307, in main
+    raise RuntimeError(
+RuntimeError: val/ does not look like an ImageFolder with 200 class dirs. Use --val_from_annotations to read the original layout.
