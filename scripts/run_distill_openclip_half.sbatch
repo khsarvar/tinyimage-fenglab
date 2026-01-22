@@ -17,6 +17,6 @@ module purge
 singularity exec --nv \
             --overlay /scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/my_pytorch.ext3:ro \
             /scratch/work/public/singularity/cuda12.6.3-cudnn9.5.1-ubuntu22.04.5.sif \
-            /bin/bash -c "source /ext3/env.sh; python distill_openclip_half.py"
+            /bin/bash -c "source /ext3/env.sh; python distill_openclip_half.py --val_from_annotations"
 
 
