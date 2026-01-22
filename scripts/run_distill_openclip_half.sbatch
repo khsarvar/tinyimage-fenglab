@@ -11,7 +11,6 @@
 #SBATCH --mem=32GB
 #SBATCH -p rtx8000
 #SBATCH --gres=gpu:rtx8000:1
-#SBATCH --job-name=torch
 
 module purge
 
