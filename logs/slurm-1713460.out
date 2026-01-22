@@ -1,0 +1,70 @@
+/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/finetune_OpenClip_imagenet.py:57: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  return torch.cuda.amp.autocast(), torch.cuda.amp.GradScaler()
+/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/finetune_OpenClip_imagenet.py:57: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  return torch.cuda.amp.autocast(), torch.cuda.amp.GradScaler()
+Device: cuda
+Unfroze last 2 visual transformer blocks out of 12.
+Epoch 1 | Train Loss: 1.2935 | Train Acc: 70.66%
+Epoch 1 | Val   Loss: 0.8646 | Val   Acc: 77.35%
+Saved new best checkpoint (acc=77.35%).
+Epoch 2 | Train Loss: 0.6856 | Train Acc: 81.52%
+Epoch 2 | Val   Loss: 0.7949 | Val   Acc: 78.89%
+Saved new best checkpoint (acc=78.89%).
+Epoch 3 | Train Loss: 0.4903 | Train Acc: 86.19%
+Epoch 3 | Val   Loss: 0.8112 | Val   Acc: 79.40%
+Saved new best checkpoint (acc=79.40%).
+Epoch 4 | Train Loss: 0.3300 | Train Acc: 90.36%
+Epoch 4 | Val   Loss: 0.8614 | Val   Acc: 78.88%
+Epoch 5 | Train Loss: 0.2233 | Train Acc: 93.19%
+Epoch 5 | Val   Loss: 0.9046 | Val   Acc: 79.36%
+Epoch 6 | Train Loss: 0.1611 | Train Acc: 95.05%
+Epoch 6 | Val   Loss: 0.9774 | Val   Acc: 78.47%
+Epoch 7 | Train Loss: 0.1245 | Train Acc: 96.11%
+Epoch 7 | Val   Loss: 1.0205 | Val   Acc: 78.61%
+Epoch 8 | Train Loss: 0.1095 | Train Acc: 96.62%
+Epoch 8 | Val   Loss: 1.0251 | Val   Acc: 78.95%
+Epoch 9 | Train Loss: 0.0954 | Train Acc: 97.05%
+Epoch 9 | Val   Loss: 1.0600 | Val   Acc: 78.85%
+Epoch 10 | Train Loss: 0.0864 | Train Acc: 97.40%
+Epoch 10 | Val   Loss: 1.1164 | Val   Acc: 78.27%
+Epoch 11 | Train Loss: 0.0794 | Train Acc: 97.58%
+Epoch 11 | Val   Loss: 1.1246 | Val   Acc: 78.45%
+Epoch 12 | Train Loss: 0.0772 | Train Acc: 97.61%
+Epoch 12 | Val   Loss: 1.1509 | Val   Acc: 78.47%
+Epoch 13 | Train Loss: 0.0738 | Train Acc: 97.73%
+Epoch 13 | Val   Loss: 1.1711 | Val   Acc: 78.51%
+Epoch 14 | Train Loss: 0.0681 | Train Acc: 97.89%
+Epoch 14 | Val   Loss: 1.1811 | Val   Acc: 78.72%
+Epoch 15 | Train Loss: 0.0635 | Train Acc: 98.11%
+Epoch 15 | Val   Loss: 1.2171 | Val   Acc: 78.00%
+Epoch 16 | Train Loss: 0.0596 | Train Acc: 98.18%
+Epoch 16 | Val   Loss: 1.2418 | Val   Acc: 77.98%
+Epoch 17 | Train Loss: 0.0638 | Train Acc: 98.06%
+Epoch 17 | Val   Loss: 1.2616 | Val   Acc: 77.62%
+Epoch 18 | Train Loss: 0.0559 | Train Acc: 98.32%
+Epoch 18 | Val   Loss: 1.2326 | Val   Acc: 77.97%
+Epoch 19 | Train Loss: 0.0559 | Train Acc: 98.30%
+Epoch 19 | Val   Loss: 1.2423 | Val   Acc: 78.30%
+Epoch 20 | Train Loss: 0.0579 | Train Acc: 98.25%
+Epoch 20 | Val   Loss: 1.2642 | Val   Acc: 78.71%
+Epoch 21 | Train Loss: 0.0529 | Train Acc: 98.40%
+Epoch 21 | Val   Loss: 1.2731 | Val   Acc: 77.99%
+Epoch 22 | Train Loss: 0.0489 | Train Acc: 98.49%
+Epoch 22 | Val   Loss: 1.2966 | Val   Acc: 77.74%
+Epoch 23 | Train Loss: 0.0547 | Train Acc: 98.37%
+Epoch 23 | Val   Loss: 1.2704 | Val   Acc: 77.87%
+Epoch 24 | Train Loss: 0.0477 | Train Acc: 98.57%
+Epoch 24 | Val   Loss: 1.3017 | Val   Acc: 78.00%
+Epoch 25 | Train Loss: 0.0524 | Train Acc: 98.41%
+Epoch 25 | Val   Loss: 1.2942 | Val   Acc: 78.27%
+Epoch 26 | Train Loss: 0.0481 | Train Acc: 98.56%
+Epoch 26 | Val   Loss: 1.3059 | Val   Acc: 77.99%
+Epoch 27 | Train Loss: 0.0459 | Train Acc: 98.57%
+Epoch 27 | Val   Loss: 1.2782 | Val   Acc: 78.32%
+Epoch 28 | Train Loss: 0.0445 | Train Acc: 98.66%
+Epoch 28 | Val   Loss: 1.3076 | Val   Acc: 78.35%
+Epoch 29 | Train Loss: 0.0400 | Train Acc: 98.79%
+Epoch 29 | Val   Loss: 1.3164 | Val   Acc: 77.83%
+Epoch 30 | Train Loss: 0.0453 | Train Acc: 98.62%
+Epoch 30 | Val   Loss: 1.3485 | Val   Acc: 77.71%
+Best Val Acc: 79.40%

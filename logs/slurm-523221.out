@@ -1,0 +1,9 @@
+Using device: cuda
+[RUN] 20251008-090429_ResNet18_bs512_lr0.001
+[IO ] checkpoints dir: checkpoints/20251008-090429_ResNet18_bs512_lr0.001
+[IO ] metrics dir    : metrics/20251008-090429_ResNet18_bs512_lr0.001
+[IO ] plots dir      : plots/20251008-090429_ResNet18_bs512_lr0.001
+[IO ] checkpoint file: checkpoints/20251008-090429_ResNet18_bs512_lr0.001/20251008-090429_ResNet18_bs512_lr0.001_best.pth
+[IO ] metrics file   : metrics/20251008-090429_ResNet18_bs512_lr0.001/20251008-090429_ResNet18_bs512_lr0.001_metrics.json
+Training started..
+slurmstepd: error: *** JOB 523221 ON gr027 CANCELLED AT 2025-10-08T21:04:13 DUE TO TIME LIMIT ***

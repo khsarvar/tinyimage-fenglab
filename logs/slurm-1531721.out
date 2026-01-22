@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/test.py", line 12, in <module>
+    import open_clip
+ModuleNotFoundError: No module named 'open_clip'
+/bin/bash: line 2: --batch_size: command not found
+/bin/bash: line 3: --epochs: command not found
+/bin/bash: line 4: --lr: command not found
+/bin/bash: line 5: --wd: command not found
+/bin/bash: line 6: --unfreeze_k: command not found
+/bin/bash: line 7: --fp16: command not found

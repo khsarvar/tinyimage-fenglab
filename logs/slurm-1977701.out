@@ -1,0 +1,45 @@
+/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/finetune_OpenClip_imagenet.py:58: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  return torch.cuda.amp.autocast(), torch.cuda.amp.GradScaler()
+/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/finetune_OpenClip_imagenet.py:58: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  return torch.cuda.amp.autocast(), torch.cuda.amp.GradScaler()
+Run ID: 20251114-114951_ViT-B-32_bs256_uk3
+Checkpoints dir: checkpoints
+Checkpoint file: checkpoints/20251114-114951_ViT-B-32_bs256_uk3_openclip_ViT-B-32_tinyimg_k3_best.pt
+Metrics file: metrics/20251114-114951_ViT-B-32_bs256_uk3/20251114-114951_ViT-B-32_bs256_uk3_metrics.json
+Device: cuda
+Unfroze last 3 visual transformer blocks out of 12.
+Epoch 01/30 | Train Loss: 1.2767 | Train Acc@1: 70.75% | Train Acc@5: 89.07% | Val Loss: 0.8360 | Val Acc@1: 77.94% | Val Acc@5: 93.42% | Epoch Time: 56.3s
+Saved new best checkpoint to checkpoints/20251114-114951_ViT-B-32_bs256_uk3_openclip_ViT-B-32_tinyimg_k3_best.pt (acc=77.94%).
+Epoch 02/30 | Train Loss: 0.6328 | Train Acc@1: 82.93% | Train Acc@5: 95.84% | Val Loss: 0.8046 | Val Acc@1: 78.99% | Val Acc@5: 93.70% | Epoch Time: 51.9s
+Saved new best checkpoint to checkpoints/20251114-114951_ViT-B-32_bs256_uk3_openclip_ViT-B-32_tinyimg_k3_best.pt (acc=78.99%).
+Epoch 03/30 | Train Loss: 0.4272 | Train Acc@1: 87.96% | Train Acc@5: 97.93% | Val Loss: 0.8082 | Val Acc@1: 79.52% | Val Acc@5: 93.84% | Epoch Time: 51.9s
+Saved new best checkpoint to checkpoints/20251114-114951_ViT-B-32_bs256_uk3_openclip_ViT-B-32_tinyimg_k3_best.pt (acc=79.52%).
+Epoch 04/30 | Train Loss: 0.2891 | Train Acc@1: 91.47% | Train Acc@5: 99.06% | Val Loss: 0.8863 | Val Acc@1: 79.19% | Val Acc@5: 93.16% | Epoch Time: 52.2s
+Epoch 05/30 | Train Loss: 0.2021 | Train Acc@1: 93.83% | Train Acc@5: 99.64% | Val Loss: 0.9634 | Val Acc@1: 78.01% | Val Acc@5: 92.76% | Epoch Time: 52.2s
+Epoch 06/30 | Train Loss: 0.1561 | Train Acc@1: 95.18% | Train Acc@5: 99.79% | Val Loss: 0.9758 | Val Acc@1: 79.34% | Val Acc@5: 93.00% | Epoch Time: 52.2s
+Epoch 07/30 | Train Loss: 0.1252 | Train Acc@1: 96.14% | Train Acc@5: 99.86% | Val Loss: 1.0562 | Val Acc@1: 78.34% | Val Acc@5: 92.81% | Epoch Time: 52.3s
+Epoch 08/30 | Train Loss: 0.1083 | Train Acc@1: 96.61% | Train Acc@5: 99.89% | Val Loss: 1.0858 | Val Acc@1: 78.55% | Val Acc@5: 92.47% | Epoch Time: 52.4s
+Epoch 09/30 | Train Loss: 0.1050 | Train Acc@1: 96.79% | Train Acc@5: 99.88% | Val Loss: 1.0897 | Val Acc@1: 78.71% | Val Acc@5: 92.63% | Epoch Time: 52.1s
+Epoch 10/30 | Train Loss: 0.0931 | Train Acc@1: 97.12% | Train Acc@5: 99.90% | Val Loss: 1.1047 | Val Acc@1: 78.54% | Val Acc@5: 92.61% | Epoch Time: 52.1s
+Epoch 11/30 | Train Loss: 0.0854 | Train Acc@1: 97.45% | Train Acc@5: 99.92% | Val Loss: 1.1115 | Val Acc@1: 78.56% | Val Acc@5: 92.71% | Epoch Time: 52.3s
+Epoch 12/30 | Train Loss: 0.0760 | Train Acc@1: 97.69% | Train Acc@5: 99.93% | Val Loss: 1.1501 | Val Acc@1: 78.37% | Val Acc@5: 92.33% | Epoch Time: 52.1s
+Epoch 13/30 | Train Loss: 0.0790 | Train Acc@1: 97.62% | Train Acc@5: 99.92% | Val Loss: 1.1542 | Val Acc@1: 78.73% | Val Acc@5: 92.50% | Epoch Time: 52.2s
+Epoch 14/30 | Train Loss: 0.0734 | Train Acc@1: 97.82% | Train Acc@5: 99.92% | Val Loss: 1.1548 | Val Acc@1: 78.21% | Val Acc@5: 92.10% | Epoch Time: 52.2s
+Epoch 15/30 | Train Loss: 0.0704 | Train Acc@1: 97.86% | Train Acc@5: 99.92% | Val Loss: 1.1720 | Val Acc@1: 78.81% | Val Acc@5: 92.72% | Epoch Time: 52.1s
+Epoch 16/30 | Train Loss: 0.0658 | Train Acc@1: 98.01% | Train Acc@5: 99.94% | Val Loss: 1.1714 | Val Acc@1: 78.52% | Val Acc@5: 92.28% | Epoch Time: 52.1s
+Epoch 17/30 | Train Loss: 0.0631 | Train Acc@1: 98.13% | Train Acc@5: 99.93% | Val Loss: 1.2305 | Val Acc@1: 78.31% | Val Acc@5: 92.51% | Epoch Time: 52.1s
+Epoch 18/30 | Train Loss: 0.0608 | Train Acc@1: 98.17% | Train Acc@5: 99.94% | Val Loss: 1.2157 | Val Acc@1: 78.53% | Val Acc@5: 92.35% | Epoch Time: 52.2s
+Epoch 19/30 | Train Loss: 0.0669 | Train Acc@1: 97.93% | Train Acc@5: 99.94% | Val Loss: 1.2429 | Val Acc@1: 77.96% | Val Acc@5: 92.05% | Epoch Time: 52.1s
+Epoch 20/30 | Train Loss: 0.0565 | Train Acc@1: 98.27% | Train Acc@5: 99.94% | Val Loss: 1.2157 | Val Acc@1: 78.67% | Val Acc@5: 92.36% | Epoch Time: 52.2s
+Epoch 21/30 | Train Loss: 0.0572 | Train Acc@1: 98.29% | Train Acc@5: 99.95% | Val Loss: 1.1806 | Val Acc@1: 78.88% | Val Acc@5: 92.21% | Epoch Time: 52.2s
+Epoch 22/30 | Train Loss: 0.0508 | Train Acc@1: 98.48% | Train Acc@5: 99.97% | Val Loss: 1.2206 | Val Acc@1: 78.30% | Val Acc@5: 91.97% | Epoch Time: 52.2s
+Epoch 23/30 | Train Loss: 0.0557 | Train Acc@1: 98.34% | Train Acc@5: 99.95% | Val Loss: 1.2676 | Val Acc@1: 78.41% | Val Acc@5: 91.75% | Epoch Time: 52.2s
+Epoch 24/30 | Train Loss: 0.0550 | Train Acc@1: 98.36% | Train Acc@5: 99.96% | Val Loss: 1.2591 | Val Acc@1: 78.66% | Val Acc@5: 92.23% | Epoch Time: 52.1s
+Epoch 25/30 | Train Loss: 0.0518 | Train Acc@1: 98.42% | Train Acc@5: 99.95% | Val Loss: 1.2605 | Val Acc@1: 78.32% | Val Acc@5: 91.85% | Epoch Time: 52.1s
+Epoch 26/30 | Train Loss: 0.0523 | Train Acc@1: 98.42% | Train Acc@5: 99.95% | Val Loss: 1.2542 | Val Acc@1: 78.21% | Val Acc@5: 92.02% | Epoch Time: 52.1s
+Epoch 27/30 | Train Loss: 0.0480 | Train Acc@1: 98.60% | Train Acc@5: 99.95% | Val Loss: 1.2984 | Val Acc@1: 77.74% | Val Acc@5: 91.79% | Epoch Time: 52.2s
+Epoch 28/30 | Train Loss: 0.0508 | Train Acc@1: 98.46% | Train Acc@5: 99.95% | Val Loss: 1.3011 | Val Acc@1: 77.87% | Val Acc@5: 91.79% | Epoch Time: 52.1s
+Epoch 29/30 | Train Loss: 0.0483 | Train Acc@1: 98.57% | Train Acc@5: 99.95% | Val Loss: 1.2720 | Val Acc@1: 78.54% | Val Acc@5: 92.07% | Epoch Time: 52.1s
+Epoch 30/30 | Train Loss: 0.0449 | Train Acc@1: 98.69% | Train Acc@5: 99.96% | Val Loss: 1.2399 | Val Acc@1: 78.30% | Val Acc@5: 92.17% | Epoch Time: 52.0s
+Best Val Acc: 79.52%
+[METRICS] Wrote metrics/20251114-114951_ViT-B-32_bs256_uk3/20251114-114951_ViT-B-32_bs256_uk3_metrics.json

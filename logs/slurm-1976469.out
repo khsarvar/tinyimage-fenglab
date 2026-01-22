@@ -1,0 +1,46 @@
+/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/finetune_OpenClip_imagenet.py:58: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  return torch.cuda.amp.autocast(), torch.cuda.amp.GradScaler()
+/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/finetune_OpenClip_imagenet.py:58: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  return torch.cuda.amp.autocast(), torch.cuda.amp.GradScaler()
+Run ID: 20251114-102109_ViT-B-32_bs256_uk1
+Checkpoints dir: checkpoints
+Checkpoint file: checkpoints/20251114-102109_ViT-B-32_bs256_uk1_openclip_ViT-B-32_tinyimg_k1_best.pt
+Metrics file: metrics/20251114-102109_ViT-B-32_bs256_uk1/20251114-102109_ViT-B-32_bs256_uk1_metrics.json
+Device: cuda
+Unfroze last 1 visual transformer blocks out of 12.
+Epoch 01/30 | Train Loss: 1.3700 | Train Acc@1: 69.50% | Train Acc@5: 87.85% | Val Loss: 0.8679 | Val Acc@1: 76.50% | Val Acc@5: 93.34% | Epoch Time: 48.0s
+Saved new best checkpoint to checkpoints/20251114-102109_ViT-B-32_bs256_uk1_openclip_ViT-B-32_tinyimg_k1_best.pt (acc=76.50%).
+Epoch 02/30 | Train Loss: 0.7390 | Train Acc@1: 79.94% | Train Acc@5: 94.76% | Val Loss: 0.8077 | Val Acc@1: 78.44% | Val Acc@5: 93.77% | Epoch Time: 45.4s
+Saved new best checkpoint to checkpoints/20251114-102109_ViT-B-32_bs256_uk1_openclip_ViT-B-32_tinyimg_k1_best.pt (acc=78.44%).
+Epoch 03/30 | Train Loss: 0.5570 | Train Acc@1: 84.26% | Train Acc@5: 96.93% | Val Loss: 0.7989 | Val Acc@1: 78.89% | Val Acc@5: 93.71% | Epoch Time: 44.6s
+Saved new best checkpoint to checkpoints/20251114-102109_ViT-B-32_bs256_uk1_openclip_ViT-B-32_tinyimg_k1_best.pt (acc=78.89%).
+Epoch 04/30 | Train Loss: 0.3928 | Train Acc@1: 88.54% | Train Acc@5: 98.55% | Val Loss: 0.8362 | Val Acc@1: 79.17% | Val Acc@5: 93.15% | Epoch Time: 44.1s
+Saved new best checkpoint to checkpoints/20251114-102109_ViT-B-32_bs256_uk1_openclip_ViT-B-32_tinyimg_k1_best.pt (acc=79.17%).
+Epoch 05/30 | Train Loss: 0.2534 | Train Acc@1: 92.46% | Train Acc@5: 99.49% | Val Loss: 0.9073 | Val Acc@1: 77.97% | Val Acc@5: 93.16% | Epoch Time: 44.2s
+Epoch 06/30 | Train Loss: 0.1727 | Train Acc@1: 94.82% | Train Acc@5: 99.81% | Val Loss: 0.9465 | Val Acc@1: 78.51% | Val Acc@5: 92.52% | Epoch Time: 45.2s
+Epoch 07/30 | Train Loss: 0.1238 | Train Acc@1: 96.27% | Train Acc@5: 99.90% | Val Loss: 0.9978 | Val Acc@1: 78.43% | Val Acc@5: 92.60% | Epoch Time: 44.9s
+Epoch 08/30 | Train Loss: 0.1028 | Train Acc@1: 96.85% | Train Acc@5: 99.92% | Val Loss: 1.0454 | Val Acc@1: 78.15% | Val Acc@5: 92.34% | Epoch Time: 45.0s
+Epoch 09/30 | Train Loss: 0.0860 | Train Acc@1: 97.44% | Train Acc@5: 99.92% | Val Loss: 1.0867 | Val Acc@1: 77.82% | Val Acc@5: 92.23% | Epoch Time: 44.3s
+Epoch 10/30 | Train Loss: 0.0742 | Train Acc@1: 97.79% | Train Acc@5: 99.93% | Val Loss: 1.1420 | Val Acc@1: 77.57% | Val Acc@5: 92.11% | Epoch Time: 44.8s
+Epoch 11/30 | Train Loss: 0.0685 | Train Acc@1: 97.89% | Train Acc@5: 99.95% | Val Loss: 1.1635 | Val Acc@1: 77.53% | Val Acc@5: 92.19% | Epoch Time: 43.7s
+Epoch 12/30 | Train Loss: 0.0656 | Train Acc@1: 97.97% | Train Acc@5: 99.96% | Val Loss: 1.2228 | Val Acc@1: 77.49% | Val Acc@5: 91.88% | Epoch Time: 44.3s
+Epoch 13/30 | Train Loss: 0.0613 | Train Acc@1: 98.09% | Train Acc@5: 99.96% | Val Loss: 1.2268 | Val Acc@1: 77.67% | Val Acc@5: 91.99% | Epoch Time: 44.4s
+Epoch 14/30 | Train Loss: 0.0592 | Train Acc@1: 98.15% | Train Acc@5: 99.95% | Val Loss: 1.2450 | Val Acc@1: 78.02% | Val Acc@5: 91.85% | Epoch Time: 44.8s
+Epoch 15/30 | Train Loss: 0.0520 | Train Acc@1: 98.40% | Train Acc@5: 99.97% | Val Loss: 1.2895 | Val Acc@1: 77.50% | Val Acc@5: 91.46% | Epoch Time: 44.2s
+Epoch 16/30 | Train Loss: 0.0536 | Train Acc@1: 98.34% | Train Acc@5: 99.97% | Val Loss: 1.3132 | Val Acc@1: 77.29% | Val Acc@5: 91.36% | Epoch Time: 43.5s
+Epoch 17/30 | Train Loss: 0.0506 | Train Acc@1: 98.44% | Train Acc@5: 99.96% | Val Loss: 1.3211 | Val Acc@1: 77.25% | Val Acc@5: 91.41% | Epoch Time: 43.9s
+Epoch 18/30 | Train Loss: 0.0485 | Train Acc@1: 98.52% | Train Acc@5: 99.97% | Val Loss: 1.3188 | Val Acc@1: 77.90% | Val Acc@5: 91.40% | Epoch Time: 44.2s
+Epoch 19/30 | Train Loss: 0.0508 | Train Acc@1: 98.42% | Train Acc@5: 99.96% | Val Loss: 1.3680 | Val Acc@1: 77.07% | Val Acc@5: 91.38% | Epoch Time: 44.1s
+Epoch 20/30 | Train Loss: 0.0457 | Train Acc@1: 98.57% | Train Acc@5: 99.97% | Val Loss: 1.3755 | Val Acc@1: 76.93% | Val Acc@5: 91.23% | Epoch Time: 43.9s
+Epoch 21/30 | Train Loss: 0.0452 | Train Acc@1: 98.61% | Train Acc@5: 99.97% | Val Loss: 1.3876 | Val Acc@1: 77.09% | Val Acc@5: 91.68% | Epoch Time: 44.6s
+Epoch 22/30 | Train Loss: 0.0455 | Train Acc@1: 98.60% | Train Acc@5: 99.96% | Val Loss: 1.3843 | Val Acc@1: 77.26% | Val Acc@5: 91.61% | Epoch Time: 44.2s
+Epoch 23/30 | Train Loss: 0.0386 | Train Acc@1: 98.83% | Train Acc@5: 99.98% | Val Loss: 1.3898 | Val Acc@1: 77.09% | Val Acc@5: 91.41% | Epoch Time: 44.8s
+Epoch 24/30 | Train Loss: 0.0390 | Train Acc@1: 98.79% | Train Acc@5: 99.98% | Val Loss: 1.3687 | Val Acc@1: 77.23% | Val Acc@5: 91.40% | Epoch Time: 44.6s
+Epoch 25/30 | Train Loss: 0.0401 | Train Acc@1: 98.82% | Train Acc@5: 99.98% | Val Loss: 1.4250 | Val Acc@1: 76.88% | Val Acc@5: 91.03% | Epoch Time: 43.7s
+Epoch 26/30 | Train Loss: 0.0399 | Train Acc@1: 98.76% | Train Acc@5: 99.97% | Val Loss: 1.3913 | Val Acc@1: 77.25% | Val Acc@5: 91.39% | Epoch Time: 44.3s
+Epoch 27/30 | Train Loss: 0.0402 | Train Acc@1: 98.74% | Train Acc@5: 99.98% | Val Loss: 1.4134 | Val Acc@1: 76.88% | Val Acc@5: 91.04% | Epoch Time: 44.1s
+Epoch 28/30 | Train Loss: 0.0350 | Train Acc@1: 98.95% | Train Acc@5: 99.97% | Val Loss: 1.3899 | Val Acc@1: 77.02% | Val Acc@5: 91.62% | Epoch Time: 45.1s
+Epoch 29/30 | Train Loss: 0.0343 | Train Acc@1: 98.97% | Train Acc@5: 99.98% | Val Loss: 1.4482 | Val Acc@1: 76.75% | Val Acc@5: 91.06% | Epoch Time: 45.1s
+Epoch 30/30 | Train Loss: 0.0350 | Train Acc@1: 98.94% | Train Acc@5: 99.98% | Val Loss: 1.4379 | Val Acc@1: 76.93% | Val Acc@5: 91.43% | Epoch Time: 44.2s
+Best Val Acc: 79.17%
+[METRICS] Wrote metrics/20251114-102109_ViT-B-32_bs256_uk1/20251114-102109_ViT-B-32_bs256_uk1_metrics.json

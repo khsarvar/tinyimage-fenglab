@@ -1,0 +1,15 @@
+Using device: cuda
+[RUN] 20251008-083429_ResNet18_bs512_lr0.001
+[IO ] checkpoints dir: checkpoints/20251008-083429_ResNet18_bs512_lr0.001
+[IO ] metrics dir    : metrics/20251008-083429_ResNet18_bs512_lr0.001
+[IO ] plots dir      : plots/20251008-083429_ResNet18_bs512_lr0.001
+[IO ] checkpoint file: checkpoints/20251008-083429_ResNet18_bs512_lr0.001/20251008-083429_ResNet18_bs512_lr0.001_best.pth
+[IO ] metrics file   : metrics/20251008-083429_ResNet18_bs512_lr0.001/20251008-083429_ResNet18_bs512_lr0.001_metrics.json
+Training started..
+Epoch 01/2 | train_loss=4.2940 | train_top1=10.16% | train_top5=27.32% | val_loss=4.3944 | val_top1=10.31% | val_top5=28.50% | epoch_time=149.9s
+Epoch 02/2 | train_loss=3.4788 | train_top1=21.22% | train_top5=46.85% | val_loss=3.3777 | val_top1=23.11% | val_top5=50.12% | epoch_time=145.9s
+Best val top1: 23.11%
+Saved best weights to: checkpoints/20251008-083429_ResNet18_bs512_lr0.001/20251008-083429_ResNet18_bs512_lr0.001_best.pth
+[METRICS] Wrote metrics/20251008-083429_ResNet18_bs512_lr0.001/20251008-083429_ResNet18_bs512_lr0.001_metrics.json
+[PLOTS] Saved: plots/20251008-083429_ResNet18_bs512_lr0.001/20251008-083429_ResNet18_bs512_lr0.001_loss_curve.png
+[PLOTS] Saved: plots/20251008-083429_ResNet18_bs512_lr0.001/20251008-083429_ResNet18_bs512_lr0.001_acc_curve_top1.png

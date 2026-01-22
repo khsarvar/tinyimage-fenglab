@@ -1,0 +1,8 @@
+Device: cuda
+Unfroze last 2 visual transformer blocks out of 12.
+Traceback (most recent call last):
+  File "/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/finetune_OpenClip_imagenet.py", line 357, in <module>
+    main()
+  File "/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/finetune_OpenClip_imagenet.py", line 279, in main
+    raise RuntimeError(
+RuntimeError: val/ does not look like an ImageFolder with 200 class dirs. Use --val_from_annotations to read the original layout.

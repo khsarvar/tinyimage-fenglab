@@ -1,0 +1,15 @@
+Using device: cuda
+[RUN] 20251004-194531_TinyNet_d3_bs512_lr0.001
+[IO ] checkpoints dir: checkpoints/20251004-194531_TinyNet_d3_bs512_lr0.001
+[IO ] metrics dir    : metrics/20251004-194531_TinyNet_d3_bs512_lr0.001
+[IO ] plots dir      : plots/20251004-194531_TinyNet_d3_bs512_lr0.001
+[IO ] checkpoint file: checkpoints/20251004-194531_TinyNet_d3_bs512_lr0.001/20251004-194531_TinyNet_d3_bs512_lr0.001_best.pth
+[IO ] metrics file   : metrics/20251004-194531_TinyNet_d3_bs512_lr0.001/20251004-194531_TinyNet_d3_bs512_lr0.001_metrics.json
+Epoch 01/3 | train_loss=4.5700 | train_top1=7.77% | train_top5=22.24% | val_loss=4.2473 | val_top1=10.41% | val_top5=29.40% | epoch_time=27.4s
+Epoch 02/3 | train_loss=4.0320 | train_top1=14.17% | train_top5=35.14% | val_loss=4.0292 | val_top1=13.38% | val_top5=34.06% | epoch_time=20.3s
+Epoch 03/3 | train_loss=3.8183 | train_top1=17.47% | train_top5=40.30% | val_loss=3.9590 | val_top1=14.16% | val_top5=35.84% | epoch_time=19.9s
+Best val top1: 14.16%
+Saved best weights to: checkpoints/20251004-194531_TinyNet_d3_bs512_lr0.001/20251004-194531_TinyNet_d3_bs512_lr0.001_best.pth
+[METRICS] Wrote metrics/20251004-194531_TinyNet_d3_bs512_lr0.001/20251004-194531_TinyNet_d3_bs512_lr0.001_metrics.json
+[PLOTS] Saved: plots/20251004-194531_TinyNet_d3_bs512_lr0.001/20251004-194531_TinyNet_d3_bs512_lr0.001_loss_curve.png
+[PLOTS] Saved: plots/20251004-194531_TinyNet_d3_bs512_lr0.001/20251004-194531_TinyNet_d3_bs512_lr0.001_acc_curve_top1.png

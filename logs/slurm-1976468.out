@@ -1,0 +1,13 @@
+/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/finetune_OpenClip_imagenet.py:58: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  return torch.cuda.amp.autocast(), torch.cuda.amp.GradScaler()
+/scratch/sk10583/FengLab/tinyimage/tinyimage-fenglab/finetune_OpenClip_imagenet.py:58: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  return torch.cuda.amp.autocast(), torch.cuda.amp.GradScaler()
+Run ID: 20251114-102108_ViT-B-32_bs256_uk1
+Checkpoints dir: checkpoints
+Checkpoint file: checkpoints/20251114-102108_ViT-B-32_bs256_uk1_openclip_ViT-B-32_tinyimg_k1_best.pt
+Metrics file: metrics/20251114-102108_ViT-B-32_bs256_uk1/20251114-102108_ViT-B-32_bs256_uk1_metrics.json
+Device: cuda
+Unfroze last 1 visual transformer blocks out of 12.
+Epoch 01/30 | Train Loss: 1.3681 | Train Acc@1: 69.59% | Train Acc@5: 87.90% | Val Loss: 0.8664 | Val Acc@1: 76.75% | Val Acc@5: 93.02% | Epoch Time: 47.3s
+Saved new best checkpoint to checkpoints/20251114-102108_ViT-B-32_bs256_uk1_openclip_ViT-B-32_tinyimg_k1_best.pt (acc=76.75%).
+slurmstepd: error: *** JOB 1976468 ON gr030 CANCELLED AT 2025-11-14T10:22:41 ***
