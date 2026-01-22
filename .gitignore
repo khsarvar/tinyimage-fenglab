@@ -19,6 +19,7 @@ checkpoints/
 .DS_Store
 __pycache__
 .env
+
 # local installs / images
 Miniforge3-Linux-x86_64.sh
 env/
