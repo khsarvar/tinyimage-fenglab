@@ -1,0 +1,128 @@
+Device: cuda
+Epoch 1/50 - loss: 11.2165 - time: 254.8s
+Val zero-shot - top1: 0.0050 top5: 0.0250
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 2/50 - loss: 11.1492 - time: 250.4s
+Val zero-shot - top1: 0.0121 top5: 0.0546
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 3/50 - loss: 10.8143 - time: 249.8s
+Val zero-shot - top1: 0.0231 top5: 0.0926
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 4/50 - loss: 10.2971 - time: 249.7s
+Val zero-shot - top1: 0.0525 top5: 0.1803
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 5/50 - loss: 9.6283 - time: 249.9s
+Val zero-shot - top1: 0.0816 top5: 0.2519
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 6/50 - loss: 9.1301 - time: 249.9s
+Val zero-shot - top1: 0.1141 top5: 0.3092
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 7/50 - loss: 8.7574 - time: 250.0s
+Val zero-shot - top1: 0.1357 top5: 0.3479
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 8/50 - loss: 8.4685 - time: 250.0s
+Val zero-shot - top1: 0.1606 top5: 0.3844
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 9/50 - loss: 8.1501 - time: 249.7s
+Val zero-shot - top1: 0.1783 top5: 0.4138
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 10/50 - loss: 7.8392 - time: 249.6s
+Val zero-shot - top1: 0.2061 top5: 0.4517
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 11/50 - loss: 7.5516 - time: 249.8s
+Val zero-shot - top1: 0.2315 top5: 0.4799
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 12/50 - loss: 7.3072 - time: 250.2s
+Val zero-shot - top1: 0.2455 top5: 0.5061
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 13/50 - loss: 7.0525 - time: 250.6s
+Val zero-shot - top1: 0.2617 top5: 0.5250
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 14/50 - loss: 6.8297 - time: 250.0s
+Val zero-shot - top1: 0.2704 top5: 0.5409
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 15/50 - loss: 6.6071 - time: 249.7s
+Val zero-shot - top1: 0.2848 top5: 0.5465
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 16/50 - loss: 6.4048 - time: 250.1s
+Val zero-shot - top1: 0.2976 top5: 0.5661
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 17/50 - loss: 6.1830 - time: 249.7s
+Val zero-shot - top1: 0.3024 top5: 0.5730
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 18/50 - loss: 5.9810 - time: 250.6s
+Val zero-shot - top1: 0.3145 top5: 0.5827
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 19/50 - loss: 5.7665 - time: 250.3s
+Val zero-shot - top1: 0.3143 top5: 0.5775
+Epoch 20/50 - loss: 5.5581 - time: 249.8s
+Val zero-shot - top1: 0.3223 top5: 0.5834
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 21/50 - loss: 5.3559 - time: 249.9s
+Val zero-shot - top1: 0.3266 top5: 0.5849
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 22/50 - loss: 5.1346 - time: 249.8s
+Val zero-shot - top1: 0.3282 top5: 0.5852
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 23/50 - loss: 4.9362 - time: 250.6s
+Val zero-shot - top1: 0.3295 top5: 0.5843
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 24/50 - loss: 4.7455 - time: 250.2s
+Val zero-shot - top1: 0.3249 top5: 0.5897
+Epoch 25/50 - loss: 4.5574 - time: 249.9s
+Val zero-shot - top1: 0.3283 top5: 0.5952
+Epoch 26/50 - loss: 4.3842 - time: 250.2s
+Val zero-shot - top1: 0.3368 top5: 0.5880
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 27/50 - loss: 4.2300 - time: 250.0s
+Val zero-shot - top1: 0.3388 top5: 0.5827
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 28/50 - loss: 4.0816 - time: 250.0s
+Val zero-shot - top1: 0.3358 top5: 0.5874
+Epoch 29/50 - loss: 3.9496 - time: 250.0s
+Val zero-shot - top1: 0.3312 top5: 0.5862
+Epoch 30/50 - loss: 3.8451 - time: 249.9s
+Val zero-shot - top1: 0.3381 top5: 0.5849
+Epoch 31/50 - loss: 3.7494 - time: 250.5s
+Val zero-shot - top1: 0.3371 top5: 0.5849
+Epoch 32/50 - loss: 3.6628 - time: 250.4s
+Val zero-shot - top1: 0.3344 top5: 0.5829
+Epoch 33/50 - loss: 3.5808 - time: 249.7s
+Val zero-shot - top1: 0.3439 top5: 0.5877
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 34/50 - loss: 3.5187 - time: 250.1s
+Val zero-shot - top1: 0.3402 top5: 0.5827
+Epoch 35/50 - loss: 3.4498 - time: 249.8s
+Val zero-shot - top1: 0.3391 top5: 0.5811
+Epoch 36/50 - loss: 3.3956 - time: 250.1s
+Val zero-shot - top1: 0.3428 top5: 0.5834
+Epoch 37/50 - loss: 3.3550 - time: 249.8s
+Val zero-shot - top1: 0.3405 top5: 0.5783
+Epoch 38/50 - loss: 3.3007 - time: 249.7s
+Val zero-shot - top1: 0.3401 top5: 0.5782
+Epoch 39/50 - loss: 3.2650 - time: 249.6s
+Val zero-shot - top1: 0.3398 top5: 0.5853
+Epoch 40/50 - loss: 3.2391 - time: 250.7s
+Val zero-shot - top1: 0.3431 top5: 0.5772
+Epoch 41/50 - loss: 3.1947 - time: 249.9s
+Val zero-shot - top1: 0.3422 top5: 0.5850
+Epoch 42/50 - loss: 3.1775 - time: 250.6s
+Val zero-shot - top1: 0.3448 top5: 0.5835
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 43/50 - loss: 3.1410 - time: 250.5s
+Val zero-shot - top1: 0.3434 top5: 0.5840
+Epoch 44/50 - loss: 3.1199 - time: 249.9s
+Val zero-shot - top1: 0.3470 top5: 0.5809
+Saved best student checkpoint to: checkpoints/20260123-070316_ViT-B-32_half_clip_distill_student_half.pt
+Epoch 45/50 - loss: 3.1053 - time: 250.0s
+Val zero-shot - top1: 0.3413 top5: 0.5777
+Epoch 46/50 - loss: 3.0747 - time: 249.8s
+Val zero-shot - top1: 0.3398 top5: 0.5797
+Epoch 47/50 - loss: 3.0763 - time: 250.2s
+Val zero-shot - top1: 0.3446 top5: 0.5862
+Epoch 48/50 - loss: 3.0500 - time: 250.6s
+Val zero-shot - top1: 0.3394 top5: 0.5728
+Epoch 49/50 - loss: 3.0309 - time: 250.3s
+Val zero-shot - top1: 0.3461 top5: 0.5784
+Epoch 50/50 - loss: 3.0056 - time: 250.2s
+Val zero-shot - top1: 0.3453 top5: 0.5785
