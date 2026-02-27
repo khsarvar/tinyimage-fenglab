@@ -24,6 +24,7 @@ __pycache__
 Miniforge3-Linux-x86_64.sh
 env/
 my_pytorch.ext3
+.venv*/
 
 # local scratch scripts
 torch-test.py

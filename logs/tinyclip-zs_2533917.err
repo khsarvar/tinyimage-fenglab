@@ -1,0 +1,82 @@
+Traceback (most recent call last):
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/pretrained.py", line 883, in download_pretrained_from_hf
+    cached_file = hf_hub_download(
+                  ^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 991, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1064, in _hf_hub_download_to_cache_dir
+    (url_to_download, etag, commit_hash, expected_size, xet_file_data, head_call_error) = _get_metadata_or_catch_error(
+                                                                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1602, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1528, in get_hf_file_metadata
+    response = _httpx_follow_relative_redirects(method="HEAD", url=url, headers=hf_headers, timeout=timeout)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 283, in _httpx_follow_relative_redirects
+    response = http_backoff(
+               ^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 402, in http_backoff
+    return next(
+           ^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 281, in _http_backoff_base
+    client = get_session()
+             ^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 204, in get_session
+    _GLOBAL_CLIENT = _GLOBAL_CLIENT_FACTORY()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 130, in default_client_factory
+    return httpx.Client(
+           ^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/httpx/_client.py", line 688, in __init__
+    self._transport = self._init_transport(
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/httpx/_client.py", line 731, in _init_transport
+    return HTTPTransport(
+           ^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/httpx/_transports/default.py", line 153, in __init__
+    ssl_context = create_ssl_context(verify=verify, cert=cert, trust_env=trust_env)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/httpx/_config.py", line 35, in create_ssl_context
+    ctx = ssl.create_default_context(cafile=os.environ["SSL_CERT_FILE"])
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/ssl.py", line 707, in create_default_context
+    context.load_verify_locations(cafile, capath, cadata)
+FileNotFoundError: [Errno 2] No such file or directory
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/factory.py", line 373, in create_model
+    hf_config = _get_hf_config(model_id, cache_dir=cache_dir)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/factory.py", line 125, in _get_hf_config
+    config_path = download_pretrained_from_hf(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/pretrained.py", line 891, in download_pretrained_from_hf
+    raise FileNotFoundError(f"Failed to download file ({filename}) for {model_id}. Last error: {e}")
+FileNotFoundError: Failed to download file (open_clip_config.json) for wkcn/TinyCLIP-ViT-61M-32-Text-29M-LAION400M. Last error: [Errno 2] No such file or directory
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/scratch/sk10583/FengLab/tinyclip_tinyimagenet_zeroshot.py", line 204, in <module>
+    main()
+  File "/scratch/sk10583/FengLab/tinyclip_tinyimagenet_zeroshot.py", line 183, in main
+    model, tokenizer, preprocess = load_tinyclip(args.hf_model_id, args.device)
+                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/scratch/sk10583/FengLab/tinyclip_tinyimagenet_zeroshot.py", line 112, in load_tinyclip
+    open_clip.create_model_from_pretrained(model_ref, device=device)
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/factory.py", line 1062, in create_model_from_pretrained
+    model = create_model(
+            ^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/factory.py", line 389, in create_model
+    raise RuntimeError(f"Failed initial config/weights load from HF Hub {model_id}: {e_config}") from e_config
+RuntimeError: Failed initial config/weights load from HF Hub wkcn/TinyCLIP-ViT-61M-32-Text-29M-LAION400M: Failed to download file (open_clip_config.json) for wkcn/TinyCLIP-ViT-61M-32-Text-29M-LAION400M. Last error: [Errno 2] No such file or directory

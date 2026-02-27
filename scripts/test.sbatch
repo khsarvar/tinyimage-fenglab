@@ -10,8 +10,6 @@
 #SBATCH --cpus-per-task=8
 #SBATCH --time=1:00:00
 #SBATCH --mem=16GB
-#SBATCH --gres=gpu:1
-#SBATCH --constraint="l40s|h200"
 
 module purge
 
@@ -20,5 +18,5 @@ module purge
 singularity exec --nv \
             --overlay /scratch/sk10583/FengLab/my_pytorch.ext3:ro \
             /share/apps/images/cuda12.6.3-cudnn9.5.1-ubuntu22.04.5.sif \
-            /bin/bash -c "source /ext3/env.sh; python distill_openclip_half.py --val_from_annotations --epochs 3 --batch_size 512"
+            /bin/bash -c "source /ext3/env.sh; python test.py"
 

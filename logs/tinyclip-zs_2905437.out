@@ -1,0 +1,3 @@
+Loading TinyCLIP from HF: wkcn/TinyCLIP-ViT-61M-32-Text-29M-LAION400M
+OpenCLIP HF format not found; falling back to transformers CLIP loader.
+Building text features for 200 classes using 13 prompts/class...
