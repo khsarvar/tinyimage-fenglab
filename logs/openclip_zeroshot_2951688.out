@@ -1,0 +1,19 @@
+Loaded 200 classes from Tiny ImageNet.
+
+===============================================
+Model: ViT-B-32 | Pretrained: laion2b_s34b_b79k
+===============================================
+Building text features...
+Evaluating...
+Zero-shot Top-1: 67.72% | Top-5: 87.56% | N=10000
+
+===============================================
+Model: ViT-B-16 | Pretrained: laion2b_s34b_b88k
+===============================================
+Building text features...
+Evaluating...
+Zero-shot Top-1: 69.24% | Top-5: 87.72% | N=10000
+
+Summary:
+  ViT-B-32  [laion2b_s34b_b79k   ]  Top-1  67.72% | Top-5  87.56%
+  ViT-B-16  [laion2b_s34b_b88k   ]  Top-1  69.24% | Top-5  87.72%

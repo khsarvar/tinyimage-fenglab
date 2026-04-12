@@ -28,6 +28,7 @@ Tiny ImageNet expected layout:
 from __future__ import annotations
 import argparse
 import os
+import time
 from pathlib import Path
 from typing import List, Dict, Tuple
 
@@ -231,11 +232,14 @@ def main():
         print("===============================================")
 
         # Create model + preprocess
+        t0 = time.time()
         model, _, preprocess = open_clip.create_model_and_transforms(model_name, pretrained=pretrained, device=args.device)
         tokenizer = open_clip.get_tokenizer(model_name)
         device = torch.device(args.device)
         model = model.to(device)
         model.eval()
+        load_time = time.time() - t0
+        print(f"Model loaded in {load_time:.2f}s")
 
         # Dataset / DataLoader
         val_ds = TinyImageNetVal(data_root, preprocess, wnids)
@@ -249,7 +253,10 @@ def main():
 
         # Build text features (can be done in full precision on CPU/GPU)
         print("Building text features...")
+        t0 = time.time()
         text_features = build_text_features(model, tokenizer, device, classnames, templates)
+        text_time = time.time() - t0
+        print(f"Text features built in {text_time:.2f}s")
 
         # Evaluate
         print("Evaluating...")
@@ -261,13 +268,18 @@ def main():
             from contextlib import nullcontext
             scaler = nullcontext
 
+        t0 = time.time()
         top1, top5 = evaluate(model, val_loader, text_features, device)
+        eval_time = time.time() - t0
+        total_time = load_time + text_time + eval_time
+        print(f"Evaluation completed in {eval_time:.2f}s")
         print(f"Zero-shot Top-1: {top1 * 100:.2f}% | Top-5: {top5 * 100:.2f}% | N={len(val_ds)}")
-        results.append(((model_name, pretrained), top1, top5))
+        print(f"Timing: load={load_time:.2f}s | text={text_time:.2f}s | eval={eval_time:.2f}s | total={total_time:.2f}s")
+        results.append(((model_name, pretrained), top1, top5, load_time, text_time, eval_time))
 
     print("\nSummary:")
-    for (m, pt), t1, t5 in results:
-        print(f"  {m:<9} [{pt:<20}]  Top-1 {t1*100:6.2f}% | Top-5 {t5*100:6.2f}%")
+    for (m, pt), t1, t5, lt, tt, et in results:
+        print(f"  {m:<9} [{pt:<20}]  Top-1 {t1*100:6.2f}% | Top-5 {t5*100:6.2f}% | time={lt+tt+et:.2f}s (load={lt:.2f} text={tt:.2f} eval={et:.2f})")
 
 
 if __name__ == "__main__":

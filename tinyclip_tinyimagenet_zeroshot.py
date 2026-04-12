@@ -12,6 +12,7 @@ from __future__ import annotations
 
 import argparse
 import os
+import time
 from pathlib import Path
 from typing import Dict, List, Mapping, Tuple
 
@@ -304,10 +305,13 @@ def main():
         print(f"Loading TinyCLIP from local dir: {args.local_model_dir}")
     else:
         print(f"Loading TinyCLIP from HF: {args.hf_model_id}")
+    t0 = time.time()
     model, tokenizer, preprocess = load_tinyclip(
         args.hf_model_id, args.device, local_model_dir=args.local_model_dir
     )
     model = model.to(device).eval()
+    load_time = time.time() - t0
+    print(f"Model loaded in {load_time:.2f}s")
 
     dataset = TinyImageNetVal(data_root, preprocess, wnids)
     loader = DataLoader(
@@ -319,11 +323,19 @@ def main():
     )
 
     print(f"Building text features for {len(classnames)} classes using {len(templates)} prompts/class...")
+    t0 = time.time()
     text_features = build_text_features(model, tokenizer, classnames, templates, device)
+    text_time = time.time() - t0
+    print(f"Text features built in {text_time:.2f}s")
 
     print("Running evaluation...")
+    t0 = time.time()
     top1, top5 = evaluate(model, loader, text_features, device)
+    eval_time = time.time() - t0
+    total_time = load_time + text_time + eval_time
+    print(f"Evaluation completed in {eval_time:.2f}s")
     print(f"Zero-shot TinyImageNet | Top-1: {top1 * 100:.2f}% | Top-5: {top5 * 100:.2f}% | N={len(dataset)}")
+    print(f"Timing: load={load_time:.2f}s | text={text_time:.2f}s | eval={eval_time:.2f}s | total={total_time:.2f}s")
 
 
 if __name__ == "__main__":

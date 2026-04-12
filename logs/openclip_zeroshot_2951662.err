@@ -1,0 +1,73 @@
+'[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)' thrown while requesting HEAD https://huggingface.co/laion/CLIP-ViT-B-32-laion2B-s34B-b79K/resolve/main/open_clip_model.safetensors
+WARNING:huggingface_hub.utils._http:'[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)' thrown while requesting HEAD https://huggingface.co/laion/CLIP-ViT-B-32-laion2B-s34B-b79K/resolve/main/open_clip_model.safetensors
+Retrying in 1s [Retry 1/5].
+WARNING:huggingface_hub.utils._http:Retrying in 1s [Retry 1/5].
+'[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)' thrown while requesting HEAD https://huggingface.co/laion/CLIP-ViT-B-32-laion2B-s34B-b79K/resolve/main/open_clip_pytorch_model.bin
+WARNING:huggingface_hub.utils._http:'[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1010)' thrown while requesting HEAD https://huggingface.co/laion/CLIP-ViT-B-32-laion2B-s34B-b79K/resolve/main/open_clip_pytorch_model.bin
+Retrying in 1s [Retry 1/5].
+WARNING:huggingface_hub.utils._http:Retrying in 1s [Retry 1/5].
+ERROR:root:Failed to download weights for tag 'laion2b_s34b_b79k': Failed to download file (open_clip_pytorch_model.bin) for laion/CLIP-ViT-B-32-laion2B-s34B-b79K. Last error: Cannot send a request, as the client has been closed.
+Traceback (most recent call last):
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/pretrained.py", line 883, in download_pretrained_from_hf
+    cached_file = hf_hub_download(
+                  ^^^^^^^^^^^^^^^^
+  File "/home/sk10583/.local/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sk10583/.local/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 982, in hf_hub_download
+    return _hf_hub_download_to_cache_dir(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sk10583/.local/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1115, in _hf_hub_download_to_cache_dir
+    _get_metadata_or_catch_error(
+  File "/home/sk10583/.local/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1649, in _get_metadata_or_catch_error
+    metadata = get_hf_file_metadata(
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sk10583/.local/lib/python3.12/site-packages/huggingface_hub/utils/_validators.py", line 89, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/sk10583/.local/lib/python3.12/site-packages/huggingface_hub/file_download.py", line 1572, in get_hf_file_metadata
+    response = _httpx_follow_relative_redirects_with_backoff(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sk10583/.local/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 644, in _httpx_follow_relative_redirects_with_backoff
+    response = http_backoff(
+               ^^^^^^^^^^^^^
+  File "/home/sk10583/.local/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 518, in http_backoff
+    return next(
+           ^^^^^
+  File "/home/sk10583/.local/lib/python3.12/site-packages/huggingface_hub/utils/_http.py", line 426, in _http_backoff_base
+    response = client.request(method=method, url=url, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sk10583/.local/lib/python3.12/site-packages/httpx/_client.py", line 825, in request
+    return self.send(request, auth=auth, follow_redirects=follow_redirects)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/sk10583/.local/lib/python3.12/site-packages/httpx/_client.py", line 901, in send
+    raise RuntimeError("Cannot send a request, as the client has been closed.")
+RuntimeError: Cannot send a request, as the client has been closed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/factory.py", line 412, in create_model
+    checkpoint_path = download_pretrained(pretrained_cfg_for_tag, cache_dir=cache_dir)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/pretrained.py", line 924, in download_pretrained
+    target = download_pretrained_from_hf(model_id, cache_dir=cache_dir)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/pretrained.py", line 891, in download_pretrained_from_hf
+    raise FileNotFoundError(f"Failed to download file ({filename}) for {model_id}. Last error: {e}")
+FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for laion/CLIP-ViT-B-32-laion2B-s34B-b79K. Last error: Cannot send a request, as the client has been closed.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/scratch/sk10583/FengLab/openclip_imagenet.py", line 274, in <module>
+    main()
+  File "/scratch/sk10583/FengLab/openclip_imagenet.py", line 234, in main
+    model, _, preprocess = open_clip.create_model_and_transforms(model_name, pretrained=pretrained, device=args.device)
+                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/factory.py", line 930, in create_model_and_transforms
+    model = create_model(
+            ^^^^^^^^^^^^^
+  File "/ext3/miniforge3/lib/python3.12/site-packages/open_clip/factory.py", line 417, in create_model
+    raise RuntimeError(f"Failed to download weights for tag '{pretrained}': {e}")
+RuntimeError: Failed to download weights for tag 'laion2b_s34b_b79k': Failed to download file (open_clip_pytorch_model.bin) for laion/CLIP-ViT-B-32-laion2B-s34B-b79K. Last error: Cannot send a request, as the client has been closed.
