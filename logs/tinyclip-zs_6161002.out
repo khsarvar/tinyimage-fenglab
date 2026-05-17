@@ -1,0 +1,8 @@
+Loading TinyCLIP from local dir: /scratch/sk10583/.huggingface/hub/models--wkcn--TinyCLIP-ViT-61M-32-Text-29M-LAION400M/snapshots/94cbbea5c7949cfe7bdafde64bcea5e403f59852
+Model loaded in 7.16s
+Building text features for 200 classes using 13 prompts/class...
+Text features built in 1.49s
+Running evaluation...
+Evaluation completed in 12.81s
+Zero-shot TinyImageNet | Top-1: 65.25% | Top-5: 85.86% | N=10000
+Timing: load=7.16s | text=1.49s | eval=12.81s | total=21.45s

@@ -1,0 +1,15 @@
+Loaded 200 classes from Tiny ImageNet.
+
+===============================================
+Model: ViT-B-32 | Pretrained: laion2b_s34b_b79k
+===============================================
+Model loaded in 3.23s
+Building text features...
+Text features built in 1.67s
+Evaluating...
+Evaluation completed in 13.11s
+Zero-shot Top-1: 67.72% | Top-5: 87.56% | N=10000
+Timing: load=3.23s | text=1.67s | eval=13.11s | total=18.02s
+
+Summary:
+  ViT-B-32  [laion2b_s34b_b79k   ]  Top-1  67.72% | Top-5  87.56% | time=18.02s (load=3.23 text=1.67 eval=13.11)

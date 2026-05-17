@@ -230,6 +230,17 @@ def load_tinyclip(hf_model_id: str, device: str, local_model_dir: str | None = N
         return load_tinyclip_from_transformers(hf_model_id, device)
 
 
+def warmup_gpu(model, device, n: int = 3) -> None:
+    """Run dummy image forward passes to warm up CUDA kernels before timing."""
+    if device.type != "cuda":
+        return
+    dummy = torch.randn(4, 3, 224, 224, device=device)
+    with torch.no_grad():
+        for _ in range(n):
+            model.encode_image(dummy)
+    torch.cuda.synchronize()
+
+
 @torch.no_grad()
 def build_text_features(model, tokenizer, classnames: List[str], templates: List[str], device: torch.device):
     class_features = []
@@ -313,6 +324,9 @@ def main():
     load_time = time.time() - t0
     print(f"Model loaded in {load_time:.2f}s")
 
+    # Warm up CUDA kernels so timing is not distorted by JIT / lazy init
+    warmup_gpu(model, device)
+
     dataset = TinyImageNetVal(data_root, preprocess, wnids)
     loader = DataLoader(
         dataset,
@@ -323,14 +337,18 @@ def main():
     )
 
     print(f"Building text features for {len(classnames)} classes using {len(templates)} prompts/class...")
+    torch.cuda.synchronize() if device.type == "cuda" else None
     t0 = time.time()
     text_features = build_text_features(model, tokenizer, classnames, templates, device)
+    torch.cuda.synchronize() if device.type == "cuda" else None
     text_time = time.time() - t0
     print(f"Text features built in {text_time:.2f}s")
 
     print("Running evaluation...")
+    torch.cuda.synchronize() if device.type == "cuda" else None
     t0 = time.time()
     top1, top5 = evaluate(model, loader, text_features, device)
+    torch.cuda.synchronize() if device.type == "cuda" else None
     eval_time = time.time() - t0
     total_time = load_time + text_time + eval_time
     print(f"Evaluation completed in {eval_time:.2f}s")

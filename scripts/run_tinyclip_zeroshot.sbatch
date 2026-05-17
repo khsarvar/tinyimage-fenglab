@@ -19,7 +19,7 @@ module purge
 
 DATA_ROOT="${DATA_ROOT:-tiny-imagenet-200}"
 HF_MODEL_ID="${HF_MODEL_ID:-wkcn/TinyCLIP-ViT-61M-32-Text-29M-LAION400M}"
-LOCAL_MODEL_DIR="${LOCAL_MODEL_DIR:-}"
+LOCAL_MODEL_DIR="${LOCAL_MODEL_DIR:-/scratch/sk10583/.huggingface/hub/models--wkcn--TinyCLIP-ViT-61M-32-Text-29M-LAION400M/snapshots/94cbbea5c7949cfe7bdafde64bcea5e403f59852}"
 BATCH_SIZE="${BATCH_SIZE:-256}"
 NUM_WORKERS="${NUM_WORKERS:-8}"
 DEVICE="${DEVICE:-cuda}"

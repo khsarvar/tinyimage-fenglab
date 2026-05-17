@@ -1,0 +1,15 @@
+Loaded 200 classes from Tiny ImageNet.
+
+===============================================
+Model: MobileCLIP2-S0 | Pretrained: dfndr2b
+===============================================
+Model loaded in 4.75s
+Building text features...
+Text features built in 1.68s
+Evaluating...
+Evaluation completed in 15.54s
+Zero-shot Top-1: 73.91% | Top-5: 91.28% | N=10000
+Timing: load=4.75s | text=1.68s | eval=15.54s | total=21.97s
+
+Summary:
+  MobileCLIP2-S0 [dfndr2b             ]  Top-1  73.91% | Top-5  91.28% | time=21.97s (load=4.75 text=1.68 eval=15.54)
